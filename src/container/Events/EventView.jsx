@@ -51,10 +51,9 @@ export default class EventView extends Component {
         let obj = { "event_name": this.props.selectedEvent.event_name, 
         "user_name": this.props.signInData.userDetails.data.UserName};
         if (this.props.handleParticipentsList) {
-            let content = this.props.selectedEvent + " " + "Has Been Nominated Successfully";
-            // this.props.showNotification(content);
-            this.props.handleParticipentsList(obj);
-            NotificationManager.success(content, 'Successful!', 2000);
+            let content = this.props.selectedEvent.event_name + " " + "Has Been Nominated Successfully By User" + " " + this.props.signInData.userDetails.data.UserName;
+            this.props.showNotification(content);
+            this.props.handleParticipentsList(obj); 
         }
     }
 
@@ -104,7 +103,7 @@ export default class EventView extends Component {
                 }
             })
         }
-        let content = this.props.selectedEvent + "Has Been Updated Successfully";
+        let content = this.props.selectedEvent.event_name + "Has Been Updated Successfully";
         this.props.showNotification(content);
     }
 
@@ -120,6 +119,7 @@ export default class EventView extends Component {
         let content = this.props.selectedEvent.event_name + " " + "Has Been Deleted Successfully";
         this.props.showNotification(content);
         this.props.handleButtonClick();
+        this.setState({isRegisterd: true});
     }
 
     hideEventEditModal = () => {
@@ -192,7 +192,7 @@ export default class EventView extends Component {
                 </div>
                 <div className="row" id="btnBlock">
                     <div className="buttonDiv"> <Button onClick={this.handleParticipate} 
-                    className = {this.state.canParticipate && ! this.state.isRegisterd ? "buttonParticipate": "buttonParticipateDisabled"}>Participate</Button></div>
+                    className = {this.state.canParticipate && !this.state.isRegisterd ? "buttonParticipate": "buttonParticipateDisabled"}>Participate</Button></div>
                     <div className="buttonDiv"> <Button onClick={this.showEventEditModal}>Edit</Button></div>
                     <div className="buttonDiv"> <Button onClick={this.handleDelete}>Delete</Button></div>
                     <div className="buttonDiv"> <Button onClick={this.showUserListModal}>View Registerd Participants</Button></div>

@@ -4,9 +4,8 @@ import { signInUser, signUpUser } from "./services/SignInService";
 import SignIn from "./container/Login/SignIn/SignIn";
 import SingUp from "./container/Login/SignUp/SignUp";
 import { Redirect } from 'react-router-dom';
+import { AlertProvider } from 'react-alerts-plus';
 
-import 'react-notifications/lib/notifications.css';
-import { NotificationContainer } from 'react-notifications';
 
 export class EventsApp extends Component {
     constructor(props) {
@@ -53,6 +52,7 @@ export class EventsApp extends Component {
             </div>
         );
         return (
+            <AlertProvider>
             <div>
                 {this.props.signInData.isLogin
                     ? 
@@ -60,8 +60,8 @@ export class EventsApp extends Component {
                     />
                     : loginForm
                 }
-                <NotificationContainer />
             </div>
+            </AlertProvider>
         )
     }
 }

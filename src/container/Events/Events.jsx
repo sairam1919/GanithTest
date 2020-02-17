@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import EventView from './EventView';
-import Announcement from 'react-announcement'
-import Logo from '../../Images/logo-small.png'
+import Notificationbar from '../NotificationBarContainer/NotificationBarContainer';
 
 
 
@@ -16,7 +15,7 @@ export default class Events extends Component {
             selectedEvent: {},
             event_name: '',
             event_description: '',
-            event_location:'',
+            event_location: '',
             event_duration: '',
             event_fees: '',
             event_tags: '',
@@ -79,26 +78,32 @@ export default class Events extends Component {
     }
 
     createEvent = () => {
-        const {event_name, event_description, event_duration, event_fees, event_location, event_tags, max_participants} = this.state;
-        let obj = {"event_name": event_name, "event_description": event_description, "event_duration": event_duration,
-                    "event_fees": event_fees, "event_location": event_location, "event_tags": event_tags, "max_participants": max_participants};
+        const { event_name, event_description, event_duration, event_fees, event_location, event_tags, max_participants } = this.state;
+        let obj = {
+            "event_name": event_name, "event_description": event_description, "event_duration": event_duration,
+            "event_fees": event_fees, "event_location": event_location, "event_tags": event_tags, "max_participants": max_participants
+        };
         this.setState({ isEventCreationDropdownOpen: false });
-        if(this.props.createEvent) {
-             this.props.createEvent(obj)
+        if (this.props.createEvent) {
+            this.props.createEvent(obj)
         }
         this.showNotification(event_name + " " + "Has been Created Successfully");
     }
 
     handleButtonClick = () => {
-        this.setState({isEventSelected: false});
+        this.setState({ isEventSelected: false });
     }
 
     showNotification = (content) => {
-       this.setState({showNotification: true, notificationContnet: content})
+        this.setState({ showNotification: true, notificationContnet: content })
+    }
+
+    hideNotification = () => {
+        this.setState({ showNotification: false })
     }
 
     handleParticipentsList = (obj) => {
-        if(this.props.handleParticipentsList) {
+        if (this.props.handleParticipentsList) {
             this.props.handleParticipentsList(obj);
         }
     }
@@ -107,6 +112,7 @@ export default class Events extends Component {
         const { eventsData, participentsList, signInData } = this.props;
         const { isEventSelected, selectedEvent, showNotification, notificationContnet, event_description } = this.state;
         let renderEvents = [];
+
         if (eventsData && eventsData.eventList && eventsData.eventList.length) {
             eventsData.eventList.forEach(element => {
                 renderEvents.push(
@@ -135,70 +141,65 @@ export default class Events extends Component {
 
         return (
             <div>
-                <h5 className = "title">Events</h5>
+                <h5 className="title">Events</h5>
                 <div className="container">
-                        {!isEventSelected ? 
+                    {!isEventSelected ?
                         <div className="row">{renderEvents}</div> :
                         <EventView
-                        eventsData = {eventsData}
-                        selectedEvent = {selectedEvent}
-                        handleButtonClick = {this.handleButtonClick}
-                        showNotification = {this.showNotification}
-                        handleParticipentsList = {this.handleParticipentsList}
-                        participentsList = { participentsList }
-                        signInData = {signInData}
+                            eventsData={eventsData}
+                            selectedEvent={selectedEvent}
+                            handleButtonClick={this.handleButtonClick}
+                            showNotification={this.showNotification}
+                            handleParticipentsList={this.handleParticipentsList}
+                            participentsList={participentsList}
+                            signInData={signInData}
                         />}
                 </div>
-                { showNotification ?
-                    <Announcement 
-                        title = {notificationContnet}
-                        subtitle= {event_description}
-                        link=""
-                        imageSource= {Logo}
-                        daysToLive={3}
-                        secondsBeforeBannerShows={2}
-                        closeIconSize={30}
-                    />:''
+                {showNotification ? 
+                    <Notificationbar
+                    notificationContnet = {notificationContnet}
+                    hideNotification = {this.hideNotification}
+                     /> : ''
                 }
-
+                
                 <Modal
-                    isOpen={this.state.isEventCreationDropdownOpen}
-                    style={this.state.modalCSS}
-                    ariaHideApp={false}
-                >
-                    <div className="create-project-header">
-                        <a className="project-cross-symbol" onClick={this.hideEventCreationDropdown}>X</a>
-                        <h4>Create New Project</h4>
-                    </div>
-                    <div className="create-project-body">
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Name" onChange={(e) => this.onChangeInputBox(e, 'event_name')} required/>
+                        isOpen={this.state.isEventCreationDropdownOpen}
+                        style={this.state.modalCSS}
+                        ariaHideApp={false}
+                    >
+                        <div className="create-project-header">
+                            <a className="project-cross-symbol" onClick={this.hideEventCreationDropdown}>X</a>
+                            <h4>Create New Event</h4>
                         </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Description" onChange={(e) => this.onChangeInputBox(e, 'event_description')} />
+                        <div className="create-project-body">
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Name" onChange={(e) => this.onChangeInputBox(e, 'event_name')} required />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Description" onChange={(e) => this.onChangeInputBox(e, 'event_description')} />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Duration" onChange={(e) => this.onChangeInputBox(e, 'event_duration')} required />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Location" onChange={(e) => this.onChangeInputBox(e, 'event_location')} required />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Fees" onChange={(e) => this.onChangeInputBox(e, 'event_fees')} required />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Event Tags" onChange={(e) => this.onChangeInputBox(e, 'event_tags')} />
+                            </div>
+                            <div className="create-project-fields">
+                                <input type="text" className="input-box" placeholder="Max no of Participants" onChange={(e) => this.onChangeInputBox(e, 'max_participants')} required />
+                            </div>
                         </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Duration" onChange={(e) => this.onChangeInputBox(e, 'event_duration')} required/>
+                        <div className="crate-project-footer">
+                            <button className="c-btn c-btn-cancle" onClick={this.hideEventCreationDropdown}>Cancle</button>
+                            <button className="c-btn c-btn-save" onClick={this.createEvent} >Save</button>
                         </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Location" onChange={(e) => this.onChangeInputBox(e, 'event_location')} required/>
-                        </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Fees" onChange={(e) => this.onChangeInputBox(e, 'event_fees')} required/>
-                        </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Event Tags"  onChange={(e) => this.onChangeInputBox(e, 'event_tags')} />
-                        </div>
-                        <div className="create-project-fields">
-                            <input type="text" className="input-box" placeholder="Max no of Participants"  onChange={(e) => this.onChangeInputBox(e, 'max_participants')} required/>
-                        </div>
-                    </div>
-                    <div className="crate-project-footer">
-                        <button className="c-btn c-btn-cancle" onClick={this.hideEventCreationDropdown}>Cancle</button>
-                        <button className="c-btn c-btn-save" onClick={this.createEvent} >Save</button>
-                    </div>
-                </Modal>
-            </div>
+                    </Modal>
+                </div>
         )
-    }
-}
+            }
+        }
