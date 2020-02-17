@@ -1,14 +1,10 @@
 {
-  "main.css": "static/css/main.718aa285.css",
-  "main.css.map": "static/css/main.718aa285.css.map",
-  "main.js": "static/js/main.e782777a.js",
-  "main.js.map": "static/js/main.e782777a.js.map",
+  "main.css": "static/css/main.455d5e37.css",
+  "main.css.map": "static/css/main.455d5e37.css.map",
+  "main.js": "static/js/main.6e6225d3.js",
+  "main.js.map": "static/js/main.6e6225d3.js.map",
   "static\\media\\create-project.jpg": "static/media/create-project.e70eaa91.jpg",
   "static\\media\\jara-logo.jpg": "static/media/jara-logo.05d751de.jpg",
-  "static\\media\\notification.eot": "static/media/notification.c0d3c94c.eot",
-  "static\\media\\notification.svg?s3g3t9": "static/media/notification.5bee74ca.svg",
-  "static\\media\\notification.ttf?s3g3t9": "static/media/notification.0b4ac1dc.ttf",
-  "static\\media\\notification.woff?s3g3t9": "static/media/notification.651771e1.woff",
   "static\\media\\notification_announcement.png": "static/media/notification_announcement.b8294b1f.png",
   "static\\media\\settings-icon.jpg": "static/media/settings-icon.195d98af.jpg",
   "static\\media\\user-icon.png": "static/media/user-icon.d98e7abc.png"
