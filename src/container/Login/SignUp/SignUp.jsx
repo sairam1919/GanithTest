@@ -71,7 +71,7 @@ export class SingUp extends Component{
                         <input type="password" className="input-box" placeholder="Password" value={this.state.password} onChange={(e)=>this.onChangeInputBox(e,'password')}/>
                         <input type="password" className="input-box" placeholder="Re Enter Password" value={this.state.confirmPassword} onChange={(e)=>this.onChangeInputBox(e,'confirmPassword')} />
                         <input type="text" className="input-box" placeholder="Mobile Number" value={this.state.mobileNum} onChange={(e)=>this.onChangeInputBox(e,'mobileNum')} />
-                        <select className="drop-dow">
+                        <select className="drop-dow" onChange={(e)=>this.onChangeInputBox(e,'userRole')}>
                             <option value="">Select User Role</option>
                             {
                                 roles.map(function(val,i){

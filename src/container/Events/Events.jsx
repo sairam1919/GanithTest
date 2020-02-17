@@ -107,7 +107,6 @@ export default class Events extends Component {
         const { eventsData, participentsList, signInData } = this.props;
         const { isEventSelected, selectedEvent, showNotification, notificationContnet, event_description } = this.state;
         let renderEvents = [];
-        console.log("showNotification: ", showNotification, notificationContnet);
         if (eventsData && eventsData.eventList && eventsData.eventList.length) {
             eventsData.eventList.forEach(element => {
                 renderEvents.push(

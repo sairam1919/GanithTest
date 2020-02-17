@@ -12,6 +12,7 @@ export class SignIn extends Component {
             userDetails: '',
             response: '',
             showError: false,
+            showSuccess: false,
         }
     }
     onChangeInputBox(e, id) {
@@ -26,7 +27,6 @@ export class SignIn extends Component {
     }
     signIn() {
         const {userList} = this.props;
-        console.log("userList: ", this.props.userList);
         let data = userList && userList.userList ? userList.userList : [];
         if (this.props.goToDashBoard) {
             if (data.length) {
