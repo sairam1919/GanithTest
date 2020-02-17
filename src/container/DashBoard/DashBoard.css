@@ -1,0 +1,92 @@
+.dashboard {
+    height: 29px;
+    width: 117px;
+    color: #1B1B25;
+    font-family: Lato;
+    font-size: 24px;
+    line-height: 29px;
+    background-color: #E9E9ED;
+    display: inline-block;
+    margin-bottom: 18px;
+    margin-top: 18px;
+}
+
+.dashboard-divider {
+    height: 1px;
+    transform: scaleY(-1);
+    background-color: #D5D5D9;
+    margin: 0px;
+    /* margin-bottom: 40px; */
+    margin-bottom: 31px;
+    margin-top: -9px;
+}
+
+.dashboard-create {
+   margin: 20px;
+}
+
+.dashboard-participate {
+    margin: 20px;
+}
+
+.main {
+    display: inline-flex;
+}
+
+
+.eventDiv{
+    border: 1px solid aliceblue;
+    border-radius: 6px;
+    padding: 25px 39px 30px 60px;
+    background-color: aquamarine;
+    text-align: left;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+ .newDiv{
+    border: 1px solid aliceblue;
+    border-radius: 6px;
+    padding: 25px 39px 30px 60px;
+    background-color: lightgrey;
+    text-align: left;
+    cursor: pointer;
+}
+
+.eventSpan{
+    position: relative;
+    right: 0px;
+    bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.title{
+    margin-left: 20px;
+}
+
+.btnBlock {
+    display: inline-flex;
+}
+
+.buttonDiv {
+    margin: 20px;
+}
+
+.buttonParticipateDisabled{
+background: #999;
+  color: #555;
+  cursor: not-allowed;
+}
+
+.eventName{
+    color: orange;
+    cursor: pointer;
+}
+
+.userList {
+    font-size: 20px;
+    color: green;
+    margin: 10px !important;
+    font-family: sans-serif;
+}
