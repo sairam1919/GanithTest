@@ -9,7 +9,7 @@
         "babel": "^5.8.23",
         "babel-loader": "^5.3.1",
         "bootstrap": "^4.0.0-beta.2",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "react": "^16.10.2",
         "react-alerts-plus": "^1.0.0",
         "react-announcement": "^1.1.2",
